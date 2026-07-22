@@ -34,7 +34,7 @@ export class DataService {
     this._loading.set(true);
     this._error.set(null);
     try {
-      const data = await firstValueFrom(this.http.get<AppData>('data.json'));
+      const data = await firstValueFrom(this.http.get<AppData>(`data.json?t=${Date.now()}`));
       this._data.set(data);
     } catch {
       this._error.set('Could not load content. Please check your connection and try again.');
