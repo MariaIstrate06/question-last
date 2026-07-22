@@ -1,5 +1,5 @@
 @if (items().length) {
-  <div class="reels-grid">
+  <div class="card-list">
     @for (reel of items(); track reel.id) {
       <app-reel-card [reel]="reel" />
     }

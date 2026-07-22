@@ -15,12 +15,16 @@ export class EmailjsService {
 
   /** Fire-and-forget notification email. Never throws. */
   notifyButtonClicked(buttonClicked: string): void {
-    this.ensureInit();
-    emailjs
-      .send(environment.emailjs.serviceId, environment.emailjs.templateId, {
-        button_clicked: buttonClicked,
-        timestamp: new Date().toISOString(),
-      })
-      .catch((err) => console.error('EmailJS send failed:', err));
+    try {
+      this.ensureInit();
+      emailjs
+        .send(environment.emailjs.serviceId, environment.emailjs.templateId, {
+          button_clicked: buttonClicked,
+          timestamp: new Date().toISOString(),
+        })
+        .catch((err) => console.error('EmailJS send failed:', err));
+    } catch (err) {
+      console.error('EmailJS send failed:', err);
+    }
   }
 }

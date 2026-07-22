@@ -14,7 +14,7 @@ export class Landing {
   ) {}
 
   onWhatIsThis(): void {
-    this.emailjs.notifyButtonClicked('What is this?');
+    this.emailjs.notifyButtonClicked('Ce e asta?');
     this.router.navigateByUrl('/what-is-this');
   }
 

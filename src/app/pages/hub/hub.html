@@ -19,7 +19,9 @@
   </nav>
 
   <div class="hub__content">
-    @if (loading()) {
+    @if (selectedTab() === 'questionLast') {
+      <app-question-last-progress />
+    } @else if (loading()) {
       <p class="status-message">Loading…</p>
     } @else if (error()) {
       <p class="status-message status-message--error">{{ error() }}</p>

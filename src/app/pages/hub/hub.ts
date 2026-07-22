@@ -6,9 +6,12 @@ import { GanduriList } from './ganduri-list/ganduri-list';
 import { ReelsList } from './reels-list/reels-list';
 import { MuzicaList } from './muzica-list/muzica-list';
 import { LocuriList } from './locuri-list/locuri-list';
+import { QuestionLastProgress } from './question-last-progress/question-last-progress';
+
+type TabId = Category | 'questionLast';
 
 interface Tab {
-  id: Category;
+  id: TabId;
   label: string;
 }
 
@@ -17,11 +20,12 @@ const TABS: Tab[] = [
   { id: 'reels', label: 'Reels' },
   { id: 'muzica', label: 'Muzică' },
   { id: 'locuri', label: 'Iași vs. Elips' },
+  { id: 'questionLast', label: 'Question Last' },
 ];
 
 @Component({
   selector: 'app-hub',
-  imports: [RouterLink, GanduriList, ReelsList, MuzicaList, LocuriList],
+  imports: [RouterLink, GanduriList, ReelsList, MuzicaList, LocuriList, QuestionLastProgress],
   templateUrl: './hub.html',
   styleUrl: './hub.css',
 })
@@ -30,7 +34,7 @@ export class Hub {
 
   readonly hubTitle = 'Lorem Ipsum';
   readonly tabs = TABS;
-  readonly selectedTab = signal<Category>('ganduri');
+  readonly selectedTab = signal<TabId>('ganduri');
 
   readonly data = this.dataService.data;
   readonly loading = this.dataService.loading;
@@ -40,7 +44,7 @@ export class Hub {
     this.dataService.load();
   }
 
-  selectTab(tab: Category): void {
+  selectTab(tab: TabId): void {
     this.selectedTab.set(tab);
   }
 }

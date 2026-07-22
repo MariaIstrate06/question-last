@@ -32,6 +32,22 @@ export function parsePlaceNameFromMapsUrl(mapsUrl: string): string | null {
   }
 }
 
+const NON_USERNAME_PATH_SEGMENTS = new Set(['reel', 'reels', 'p', 'tv']);
+
+/** Best-effort extraction of the poster's @handle from an Instagram reel URL, e.g. instagram.com/<username>/reel/<code>/. */
+export function parseInstagramUsername(url: string): string | null {
+  try {
+    const segments = new URL(url).pathname.split('/').filter(Boolean);
+    const first = segments[0]?.toLowerCase();
+    if (first && !NON_USERNAME_PATH_SEGMENTS.has(first)) {
+      return segments[0];
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export type MusicSource = 'spotify' | 'youtube' | 'unknown';
 
 export function detectMusicSource(url: string): MusicSource {

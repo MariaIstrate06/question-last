@@ -144,14 +144,3 @@ button {
     animation: none;
   }
 }
-
-/* Instagram's embed script injects its own iframe as an unstyled sibling of
-   the blockquote — this lives here (unscoped) because component style
-   encapsulation can't reach markup a 3rd-party script injects into the DOM. */
-.instagram-media {
-  margin: 0 !important;
-}
-
-.instagram-media iframe {
-  max-width: 100% !important;
-}

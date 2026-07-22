@@ -1,18 +1,22 @@
-<div class="reel-card">
-  <div class="reel-card__frame">
-    @if (visible()) {
-      <blockquote
-        class="instagram-media"
-        [attr.data-instgrm-permalink]="reel().url"
-        data-instgrm-version="14"
-      >
-        <a [href]="reel().url" target="_blank" rel="noopener"></a>
-      </blockquote>
-    } @else {
-      <div class="reel-card__skeleton"></div>
+<button type="button" class="reel-card" (click)="open()">
+  <span class="reel-card__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  </span>
+
+  <span class="reel-card__meta">
+    @if (username) {
+      <span class="reel-card__username">&#64;{{ username }}</span>
     }
-  </div>
-  @if (reel().caption) {
-    <p class="reel-card__caption">{{ reel().caption }}</p>
-  }
-</div>
+    @if (reel().caption) {
+      <span class="reel-card__caption">{{ reel().caption }}</span>
+    } @else {
+      <span class="reel-card__caption reel-card__caption--muted">Instagram reel</span>
+    }
+  </span>
+
+  <span class="reel-card__open">Open</span>
+</button>
