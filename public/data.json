@@ -9,6 +9,12 @@
     }
   ],
   "reels": [],
-  "muzica": [],
+  "muzica": [
+    {
+      "id": "2470836b-fa79-409e-b3dd-10909edaadec",
+      "url": "https://open.spotify.com/track/7BQVhWw9GR1Up3eKQrYFlI?si=ed7bbb50f5614ee3",
+      "addedDate": "2026-07-22"
+    }
+  ],
   "locuri": []
 }
