@@ -16,5 +16,12 @@
       "addedDate": "2026-07-22"
     }
   ],
-  "locuri": []
+  "locuri": [
+    {
+      "id": "f0e96c00-3e43-4c64-a886-44d05df88cce",
+      "mapsUrl": "https://maps.app.goo.gl/sPT4Rx8ELyyszHkw7",
+      "name": "Orange Beanie",
+      "note": "pancakes!!!!!!"
+    }
+  ]
 }
