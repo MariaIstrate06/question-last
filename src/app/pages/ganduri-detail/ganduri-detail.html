@@ -1,0 +1,20 @@
+<main class="letter-page">
+  <a routerLink="/lets-get-into-it" class="back-btn" aria-label="Back">← Back</a>
+
+  @if (item(); as g) {
+    <article class="letter">
+      <h1 class="letter__title">{{ g.title }}</h1>
+      <p class="letter__date">{{ formatDate(g.date) }}</p>
+
+      <div class="letter__body">
+        @for (paragraph of g.fullText.split('\n\n'); track $index) {
+          <p>{{ paragraph }}</p>
+        }
+      </div>
+
+      <p class="letter__signature">— cu drag, mereu</p>
+    </article>
+  } @else if (!loading()) {
+    <p class="empty-state">This letter doesn't seem to exist.</p>
+  }
+</main>

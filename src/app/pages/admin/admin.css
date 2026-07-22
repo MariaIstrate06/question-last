@@ -1,0 +1,123 @@
+.pin-gate {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.pin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 16rem;
+}
+
+.pin-form__label {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.pin-form__input {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: var(--fs-lg);
+  letter-spacing: 0.3em;
+  text-align: center;
+  padding: var(--space-sm);
+}
+
+.pin-form__error {
+  color: var(--color-accent-pink);
+  font-size: var(--fs-xs);
+}
+
+.pin-form__submit,
+.submit-btn {
+  appearance: none;
+  border: none;
+  background: var(--color-accent-blue);
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-top: var(--space-xs);
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.pin-form__submit:hover,
+.submit-btn:hover {
+  background: var(--color-accent-blue-strong);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin {
+  min-height: 100dvh;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.admin__title {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-lg);
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-top: var(--space-lg);
+}
+
+.field-label {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+}
+
+.field-input,
+.field-select,
+.field-textarea {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  padding: var(--space-sm);
+}
+
+.field-textarea {
+  resize: vertical;
+  font-family: var(--font-serif);
+  line-height: 1.6;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-lg) 0;
+}
+
+.status-msg {
+  font-size: var(--fs-sm);
+  margin-top: var(--space-md);
+}
+
+.status-msg--success {
+  color: var(--color-accent-blue);
+}
+
+.status-msg--error {
+  color: var(--color-accent-pink);
+}

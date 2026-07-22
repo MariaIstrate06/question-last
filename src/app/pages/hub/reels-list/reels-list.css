@@ -1,0 +1,18 @@
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .reels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.empty-state {
+  color: var(--color-text-faint);
+  font-size: var(--fs-sm);
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}

@@ -1,0 +1,129 @@
+@if (!unlocked()) {
+  <main class="pin-gate">
+    <form class="pin-form" (ngSubmit)="checkPin()">
+      <label for="pin" class="pin-form__label">Enter PIN</label>
+      <input
+        id="pin"
+        name="pin"
+        type="password"
+        inputmode="numeric"
+        autocomplete="off"
+        class="pin-form__input"
+        [(ngModel)]="pinInput"
+      />
+      @if (pinError) {
+        <p class="pin-form__error">Incorrect PIN.</p>
+      }
+      <button type="submit" class="pin-form__submit">Unlock</button>
+    </form>
+  </main>
+} @else {
+  <main class="admin">
+    <h1 class="admin__title">Add content</h1>
+
+    <label class="field-label" for="category">Category</label>
+    <select
+      id="category"
+      class="field-select"
+      [ngModel]="category()"
+      (ngModelChange)="category.set($event)"
+    >
+      @for (c of categories; track c.id) {
+        <option [value]="c.id">{{ c.label }}</option>
+      }
+    </select>
+
+    <form class="admin-form" (ngSubmit)="submit()">
+      @switch (category()) {
+        @case ('ganduri') {
+          <label class="field-label" for="g-title">Title</label>
+          <input id="g-title" name="g-title" class="field-input" [(ngModel)]="ganduriForm.title" />
+
+          <label class="field-label" for="g-date">Date</label>
+          <input
+            id="g-date"
+            name="g-date"
+            type="date"
+            class="field-input"
+            [(ngModel)]="ganduriForm.date"
+          />
+
+          <label class="field-label" for="g-tags">Tags (comma-separated)</label>
+          <input
+            id="g-tags"
+            name="g-tags"
+            class="field-input"
+            placeholder="funny, deep, drunk"
+            [(ngModel)]="ganduriForm.tags"
+          />
+
+          <label class="field-label" for="g-text">Full text</label>
+          <textarea
+            id="g-text"
+            name="g-text"
+            class="field-textarea"
+            rows="8"
+            [(ngModel)]="ganduriForm.fullText"
+          ></textarea>
+        }
+        @case ('reels') {
+          <label class="field-label" for="r-url">Instagram reel URL</label>
+          <input id="r-url" name="r-url" class="field-input" [(ngModel)]="reelsForm.url" />
+
+          <label class="field-label" for="r-caption">Caption (optional)</label>
+          <input id="r-caption" name="r-caption" class="field-input" [(ngModel)]="reelsForm.caption" />
+        }
+        @case ('muzica') {
+          <label class="field-label" for="m-url">Spotify or YouTube URL</label>
+          <input id="m-url" name="m-url" class="field-input" [(ngModel)]="muzicaForm.url" />
+
+          <label class="field-label" for="m-date">Added date (optional)</label>
+          <input
+            id="m-date"
+            name="m-date"
+            type="date"
+            class="field-input"
+            [(ngModel)]="muzicaForm.addedDate"
+          />
+        }
+        @case ('locuri') {
+          <label class="field-label" for="l-maps">Google Maps share link</label>
+          <input id="l-maps" name="l-maps" class="field-input" [(ngModel)]="locuriForm.mapsUrl" />
+
+          <label class="field-label" for="l-name">Name</label>
+          <input id="l-name" name="l-name" class="field-input" [(ngModel)]="locuriForm.name" />
+
+          <label class="field-label" for="l-note">Note (optional)</label>
+          <input id="l-note" name="l-note" class="field-input" [(ngModel)]="locuriForm.note" />
+        }
+      }
+
+      <hr class="divider" />
+
+      <label class="field-label" for="pat">GitHub personal access token</label>
+      <input
+        id="pat"
+        name="pat"
+        type="password"
+        autocomplete="off"
+        class="field-input"
+        placeholder="entered fresh each session, never stored in code"
+        [ngModel]="pat"
+        (ngModelChange)="onPatChange($event)"
+      />
+
+      <button type="submit" class="submit-btn" [disabled]="submitState() === 'submitting'">
+        {{ submitState() === 'submitting' ? 'Submitting…' : 'Commit to main' }}
+      </button>
+
+      @if (submitState() === 'success') {
+        <p class="status-msg status-msg--success">
+          Committed! The site will redeploy automatically in a minute or two.
+        </p>
+      }
+      @if (submitState() === 'error') {
+        <p class="status-msg status-msg--error">{{ submitError() }}</p>
+      }
+    </form>
+  </main>
+}

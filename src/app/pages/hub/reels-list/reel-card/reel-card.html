@@ -1,0 +1,18 @@
+<div class="reel-card">
+  <div class="reel-card__frame">
+    @if (visible()) {
+      <blockquote
+        class="instagram-media"
+        [attr.data-instgrm-permalink]="reel().url"
+        data-instgrm-version="14"
+      >
+        <a [href]="reel().url" target="_blank" rel="noopener"></a>
+      </blockquote>
+    } @else {
+      <div class="reel-card__skeleton"></div>
+    }
+  </div>
+  @if (reel().caption) {
+    <p class="reel-card__caption">{{ reel().caption }}</p>
+  }
+</div>

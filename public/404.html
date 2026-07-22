@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>question-last</title>
+    <!--
+      GitHub Pages SPA redirect trick (https://github.com/rafgraph/spa-github-pages).
+      GH Pages has no server-side rewrites, so a deep link like
+      /question-last/lets-get-into-it/ganduri/1 404s. This encodes the path into
+      a query string and redirects to index.html, which decodes it back via
+      history.replaceState before the Angular router boots.
+    -->
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

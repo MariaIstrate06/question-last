@@ -1,0 +1,9 @@
+@if (items().length) {
+  <div class="reels-grid">
+    @for (reel of items(); track reel.id) {
+      <app-reel-card [reel]="reel" />
+    }
+  </div>
+} @else {
+  <p class="empty-state">Nothing here yet.</p>
+}

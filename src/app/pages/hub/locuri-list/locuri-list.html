@@ -1,0 +1,17 @@
+@if (items().length) {
+  <div class="card-list">
+    @for (place of items(); track place.id) {
+      <div class="place-card">
+        <div class="place-card__meta">
+          <p class="place-card__name">{{ displayName(place) }}</p>
+          @if (place.note) {
+            <p class="place-card__note">{{ place.note }}</p>
+          }
+        </div>
+        <a class="maps-btn" [href]="place.mapsUrl" target="_blank" rel="noopener">Open in Maps</a>
+      </div>
+    }
+  </div>
+} @else {
+  <p class="empty-state">Nothing here yet.</p>
+}

@@ -1,0 +1,22 @@
+@if (items().length) {
+  <div class="card-list">
+    @for (item of items(); track item.id) {
+      <a class="card" [routerLink]="['/lets-get-into-it/ganduri', item.id]">
+        <div class="card__head">
+          <h3 class="card__title">{{ item.title }}</h3>
+          <span class="card__date">{{ formatDate(item.date) }}</span>
+        </div>
+        @if (item.tags.length) {
+          <div class="card__tags">
+            @for (tag of item.tags; track tag) {
+              <span class="chip" [class]="'chip--' + tagAccentClass(tag)">{{ tag }}</span>
+            }
+          </div>
+        }
+        <p class="card__preview">{{ preview(item.fullText) }}</p>
+      </a>
+    }
+  </div>
+} @else {
+  <p class="empty-state">Nothing here yet.</p>
+}

@@ -1,0 +1,64 @@
+.letter-page {
+  min-height: 100dvh;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
+
+.back-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.back-btn:hover {
+  color: var(--color-accent-blue);
+}
+
+.letter {
+  max-width: 34rem;
+  margin: 0 auto;
+  font-family: var(--font-serif);
+}
+
+.letter__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: var(--fs-2xl);
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.letter__date {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xl);
+}
+
+.letter__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  font-size: var(--fs-md);
+  line-height: 1.85;
+  color: var(--color-text);
+}
+
+.letter__signature {
+  margin-top: var(--space-2xl);
+  font-style: italic;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+.empty-state {
+  color: var(--color-text-faint);
+  font-size: var(--fs-sm);
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
